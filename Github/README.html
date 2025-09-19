@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="relat%C3%B3rio-de-laborat%C3%B3rio-qualidade-de-servi%C3%A7o-qos---a-otimiza%C3%A7%C3%A3o-da-jornada-dos-pacotes">Relatório de Laboratório: Qualidade de Serviço (QoS) - A Otimização da Jornada dos Pacotes</h1>
+<p><strong>Disciplina:</strong> Redes de Computadores II
+<strong>Professora:</strong> Angelita Rettore de Araujo</p>
+<p><strong>Nome do Aluno:</strong> Felipe Biava Favarin</p>
+<p><strong>Turma:</strong> Redes II - 6° Fase</p>
+<hr>
+<h2 id="1-introdu%C3%A7%C3%A3o">1. Introdução</h2>
+<p>Este laboratório aborda a <strong>Qualidade de Serviço (QoS)</strong>, um conjunto de mecanismos importantes para gerenciar o tráfego de rede e assegurar que aplicações críticas recebam tratamento preferencial. Diferente dos laboratórios anteriores que focaram na confiabilidade (garantir que os pacotes cheguem), o objetivo aqui é garantir que os pacotes cheguem <em>com qualidade</em> – ou seja, com a latência, jitter, throughput e perda de pacotes adequados.</p>
+<p>A importância da QoS é contextualizada pela <strong>narrativa da telecirurgia</strong>, onde cada pacote de comando tátil, voz ou dado vital do paciente é crucial. Atrasos, variações irregulares na chegada ou perda de pacotes podem ter consequências catastróficas.</p>
+<h2 id="2-objetivos">2. Objetivos</h2>
+<p>Os principais objetivos deste laboratório são:</p>
+<ol>
+<li><strong>Compreender e medir</strong> os conceitos fundamentais de Latência, Jitter, Throughput, Perda de Pacotes e Classificação de Tráfego no contexto de QoS.</li>
+<li><strong>Configurar e executar simulações</strong> no <strong>Network Simulator 2 (NS2)</strong> para observar o comportamento da rede sob diferentes condições de QoS.</li>
+<li><strong>Utilizar o Wireshark</strong> para capturar e analisar o tráfego de rede, medindo parâmetros de QoS em tempo real.</li>
+<li><strong>Analisar o impacto</strong> da variação dos parâmetros de QoS no desempenho de diferentes tipos de aplicações.</li>
+<li><strong>Comparar a tolerância a perdas e a sensibilidade à latência e jitter</strong> de diversas aplicações.</li>
+<li><strong>Propor soluções</strong> baseadas em QoS para otimizar o desempenho de aplicações críticas em cenários de rede desafiadores.</li>
+</ol>
+<h2 id="3-ferramentas-utilizadas">3. Ferramentas Utilizadas</h2>
+<ul>
+<li><strong>Network Simulator 2 (NS2)</strong>: Ambiente de simulação de rede para modelar cenários.</li>
+<li><strong>Wireshark</strong>: Analisador de protocolo de rede para captura e inspeção de pacotes em tempo real.</li>
+<li><strong>Acesso à Internet</strong>: Para testes com ferramentas online (como Google Meet).</li>
+</ul>
+<hr>
+<h2 id="4-parte-i-relembrando-a-jornada-%E2%80%93-preparando-o-ambiente">4. Parte I: Relembrando a Jornada – Preparando o Ambiente</h2>
+<p><strong>Contexto Teórico:</strong> A narrativa da cirurgia remota é a base para entender a importância dos &quot;pacotes heróis&quot; (Pablo, Melody, Flash e Data) e como a QoS é vital para a missão deles de salvar uma vida.</p>
+<h3 id="41-verifica%C3%A7%C3%A3o-e-configura%C3%A7%C3%A3o-inicial-do-ns2"><strong>4.1. Verificação e Configuração Inicial do NS2</strong></h3>
+<ul>
+<li>Confirmei a instalação do NS2 e criei o arquivo <code>qos_base.tcl</code>.</li>
+</ul>
+<p><strong>Entrega:</strong> Captura de tela do <code>qos_base.tcl</code> no editor de texto.</p>
+<p><img src="/Github/imagens/print_qos_base.jpeg" alt="captura de tela do arquivo qos_base"></p>
+<h3 id="42-configura%C3%A7%C3%A3o-inicial-do-wireshark"><strong>4.2. Configuração Inicial do Wireshark</strong></h3>
+<ul>
+<li>Abri o Wireshark e selecionei a interface de rede correta para captura.</li>
+</ul>
+<p><strong>Entrega:</strong> Captura de tela do Wireshark com a interface de captura selecionada.</p>
+<p><img src="/Github/imagens/print_wireshark_interface_selecionada.jpeg" alt="captura de tela do Wireshark mostrando a interface selecionada"></p>
+<hr>
+<h2 id="5-parte-ii-lat%C3%AAncia-delay-%E2%80%93-o-tempo-%C3%A9-essencial">5. Parte II: Latência (Delay) – O Tempo é Essencial</h2>
+<p><strong>Contexto Teórico:</strong> A latência é o tempo que um pacote leva para ir da origem ao destino, como o tempo para o comando tátil do Dr. Martinez (Flash) chegar ao bisturi em Manaus.</p>
+<h3 id="51-simula%C3%A7%C3%A3o-de-lat%C3%AAncia-no-ns2"><strong>5.1. Simulação de Latência no NS2</strong></h3>
+<ul>
+<li>Criei e executei o script <code>lab_latencia.tcl</code>, experimentando diferentes valores para <code>link_delay</code> (ex: 10ms, 100ms, 500ms).</li>
+</ul>
+<p><strong>Entrega:</strong> O código <code>lab_latencia.tcl</code> utilizado.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># [Conferir arquivo lab_latencia.tcl]</span>
+</div></code></pre>
+<h3 id="52-an%C3%A1lise-da-lat%C3%AAncia-no-arquivo-de-trace-tr"><strong>5.2. Análise da Latência no Arquivo de Trace (.tr)</strong></h3>
+<ul>
+<li>Analisei o arquivo <code>lab_latencia.tr</code>, identificando o envio e recebimento de pacotes para calcular a latência de ponta a ponta.</li>
+</ul>
+<p><strong>Entrega:</strong> Trecho do arquivo <code>.tr</code> destacando um pacote enviado e seu respectivo recebimento.</p>
+<h1 id="trecho-do-arquivo">-#- Trecho do Arquivo -#- --#</h1>
+<p>O arquivo gerado foi o base_output.tr</p>
+<p>Nele temos:</p>
+<ul>
+<li>0.51 0 1 cbr 1000 ------- 0 0.0 1.0 1 1</li>
+</ul>
+<ul>
+<li>0.51 0 1 cbr 1000 ------- 0 0.0 1.0 1 1
+r 1.018 0 1 cbr 1000 ------- 0 0.0 1.0 1 1</li>
+</ul>
+<p>Onde:
+O último número indica o id do pacote, nesse caso, sobre o pacote 1
+&quot;+&quot; significa que o pacote está enfileirado, &quot;-&quot; significa que o pacote foi retirado da fila, e &quot;r&quot; significa a receber (na saída do link), isso é, a comprovação que o pacote foi recebido.</p>
+<p><strong>Cálculos da Latência:</strong></p>
+<p>Cálculo da latência:
+latência = (tempo de recebimento - tempo de envio)</p>
+<h1 id="pacotes-selecionados">Pacotes Selecionados</h1>
+<p>10ms:</p>
+<ul>
+<li>0.69 0 1 cbr 1000 ------- 0 0.0 1.0 19 19</li>
+</ul>
+<ul>
+<li>0.69 0 1 cbr 1000 ------- 0 0.0 1.0 19 19
+r 0.708 0 1 cbr 1000 ------- 0 0.0 1.0 19 19</li>
+</ul>
+<p>100ms:</p>
+<ul>
+<li>0.85 0 1 cbr 1000 ------- 0 0.0 1.0 35 35</li>
+</ul>
+<ul>
+<li>0.85 0 1 cbr 1000 ------- 0 0.0 1.0 35 35
+r 0.958 0 1 cbr 1000 ------- 0 0.0 1.0 35 35</li>
+</ul>
+<p>500ms:</p>
+<ul>
+<li>0.77 0 1 cbr 1000 ------- 0 0.0 1.0 27 27</li>
+</ul>
+<ul>
+<li>0.77 0 1 cbr 1000 ------- 0 0.0 1.0 27 27
+r 1.278 0 1 cbr 1000 ------- 0 0.0 1.0 27 27</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>link_delay</code> Configurado</th>
+<th style="text-align:left">Timestamp Envio</th>
+<th style="text-align:left">Timestamp Recebimento</th>
+<th style="text-align:left">Latência Calculada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[Valor 1 (e.g., 10ms)]</td>
+<td style="text-align:left">[0,69]</td>
+<td style="text-align:left">[0,708]</td>
+<td style="text-align:left">[0,018]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 2 (e.g., 100ms)]</td>
+<td style="text-align:left">[0,85]</td>
+<td style="text-align:left">[0,958]</td>
+<td style="text-align:left">[0,108]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 3 (e.g., 500ms)]</td>
+<td style="text-align:left">[0,77]</td>
+<td style="text-align:left">[1,278]</td>
+<td style="text-align:left">[0,508]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-perguntas-para-refletir-e-discutir"><strong>5.3. Perguntas para Refletir e Discutir</strong></h3>
+<ol>
+<li>
+<p><strong>Qual a relação entre o <code>link_delay</code> configurado no script e a latência medida no arquivo <code>.tr</code>?</strong></p>
+<ul>
+<li>Ao mudarmos o link_delay para 10ms vemos que os pacotes de tamanho 1000 bytes vão mais rapidamente pelo canal e o receptor começa a receber antes, o delay de envio do 1° pacote ao recebimento do mesmo é menor, com 10ms temos uma latência de 0,018 segundos.
+Mudando para 100ms de link_delay, temos vários pacotes de 1000 bytes jogados no canal e o tempo de latência aumenta para 0,108 segundos. E quanto mais aumentamos o link_delay mais vemos um impacto direto na latência, com 500ms temos 0,508 de latência.</li>
+</ul>
+</li>
+<li>
+<p><strong>Como a latência afeta a percepção do usuário em aplicações como VoIP ou jogos online?</strong></p>
+<ul>
+<li>A demora para o recebimento de pacotes pode fazer com que o jogador1 (num jogo online) comece a travar constantemente, pois é o tempo de recebimento + processamento do computador dele. Considerando um jogador2 com latência menor, ele não passará pelas mesmas dificuldades que o outro jogador1.
+Numa chamada de vídeo (VoIP), temos a perda / travamento da voz e interferências.</li>
+</ul>
+</li>
+<li>
+<p><strong>Se o Dr. Martinez estivesse em Tóquio e o paciente em Manaus, qual seria o impacto na latência?</strong></p>
+<ul>
+<li>Considerando a distância em que os pacotes da comunicação terão que passar por vários roteadores, servidores e assim por diante. Além do tempo de processamento de cada, junto com o delay dos links (conexões) teremos um atraso enorme para a telecirurgia. Praticamente, tornando a cirurgia inviável.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="6-parte-iii-jitter-e-perda-de-pacotes-%E2%80%93-a-varia%C3%A7%C3%A3o-inesperada-e-o-pre%C3%A7o-da-imperfei%C3%A7%C3%A3o">6. Parte III: Jitter e Perda de Pacotes – A Variação Inesperada e o Preço da Imperfeição</h2>
+<p><strong>Contexto Teórico:</strong> <strong>Jitter</strong> é a variação no atraso dos pacotes, causando &quot;voz robotizada&quot; (pacotes de Melody). A <strong>perda de pacotes</strong> ocorre quando um pacote não chega, sendo a tolerância variável por aplicação (pacotes de Data). O <strong>RTCP (Real-Time Control Protocol)</strong> é utilizado por aplicações em tempo real (como Google Meet) para reportar a qualidade da transmissão, incluindo jitter e perda.</p>
+<h3 id="61-an%C3%A1lise-do-jitter-e-perda-de-pacotes-no-wireshark-captura-local-de-rtcp"><strong>6.1. Análise do Jitter e Perda de Pacotes no Wireshark (Captura Local de RTCP)</strong></h3>
+<ul>
+<li>Iniciei uma chamada no Google Meet e capturei o tráfego com o Wireshark.</li>
+<li>Filtrei o tráfego por <code>rtcp</code> e identifiquei os tipos de pacotes (SR, RR, SDES, Bye).</li>
+<li>Analisei os <strong>Receiver Reports (RR)</strong> para localizar os campos <code>Fraction Lost</code>, <code>Cumulative Number of Packets Lost</code> e <code>Interarrival Jitter</code>.</li>
+</ul>
+<p><strong>Entregas:</strong></p>
+<ol>
+<li>Captura de tela do Wireshark mostrando a captura inicial de pacotes.</li>
+</ol>
+<p><img src="/Github/imagens/print_wireshark_captura_inicial.jpeg" alt="captura de tela da captura inicial de pacotes no wireshark"></p>
+<ol start="2">
+<li>Captura de tela do Wireshark mostrando o filtro <code>rtcp</code> aplicado.</li>
+</ol>
+<p><img src="/Github/imagens/print_wireshark_captura_filtrada.jpeg" alt="captura de tela da captura inicial do wireshark com o filtro selecionado"></p>
+<ol start="3">
+<li>Captura de tela dos detalhes de um pacote <strong>Receiver Report (RR)</strong>, com os campos <code>Fraction Lost</code>, <code>Cumulative Number of Packets Lost</code> e <code>Interarrival Jitter</code> claramente visíveis.</li>
+</ol>
+<p><img src="/Github/imagens/print_wireshark_campos1.jpeg" alt="captura de tela da captura inicial do wireshark com os campos jitter, fraction lost e cumulative visíveis"></p>
+<p><img src="/Github/imagens/print_wireshark_campos2.jpeg" alt="captura de tela da captura inicial do wireshark para confirmação dos campos jitter, fraction lost e cumulative"></p>
+<p><strong>Valores Observados:</strong></p>
+<ul>
+<li><strong>Interarrival Jitter:</strong> 1550922407 ms -&gt; são quase 18 dias</li>
+<li><strong>Fraction Lost:</strong> 83 / 256 = 0,32422 x100 = 32,422% (ou % se convertido)</li>
+<li><strong>Cumulative Number of Packets Lost:</strong> 6701384</li>
+</ul>
+<h3 id="62-perguntas-para-refletir-e-discutir"><strong>6.2. Perguntas para Refletir e Discutir</strong></h3>
+<ol>
+<li>
+<p><strong>Como esses valores de Jitter e Fraction Lost se comparam aos limites aceitáveis para uma boa qualidade de voz/vídeo (ex: jitter idealmente abaixo de 30ms, perda abaixo de 1%)?</strong></p>
+<ul>
+<li>Parece que a captura do valor de jitter realizado pelo WireShark apresenta problemas, pois se considerarmos o valor 1550922407 ms, são quase 17,95 dias. O que torna um pouco irreal essa análise. Considerando o valor de fraction lost também não temos o ideal, ele está em 32,422%.</li>
+</ul>
+<p>Fiz o teste analisando outro pacote e esses foram os valores:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>Interarrival Jitter:</strong> 114427906 ms -&gt; 1,3244 dias</p>
+</li>
+<li>
+<p><strong>Fraction Lost:</strong> 148 / 256 = 0,578125 x100 = 57,81% (ou % se convertido)</p>
+</li>
+<li>
+<p><strong>Cumulative Number of Packets Lost:</strong> -5804984</p>
+<p>Realmente, não sei como o WireShark faz essa análise, mas suponho que esteja incorreta.</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Por que o RTCP é essencial para aplicações em tempo real, mesmo que o RTP (dados de mídia) esteja criptografado?</strong></p>
+<ul>
+<li>Porque no RTCP temos as informações de jitter e perdas, servindo como relatório. A partir desse relatório é possível ajustar as perdas e atrasos, diminuindo-os ao aceitável.
+Logo, ao operar sobre o protocolo TCP, pode-se alternar entre RTP e RTCP para a garantia de entrega dos pacotes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Como as informações de jitter e perda de pacotes reportadas pelo RTCP podem ser usadas pela aplicação (Google Meet) para ajustar a qualidade da transmissão?</strong></p>
+<ul>
+<li>O Google Meet avalia o tempo de chegada dos pacotes, percebe que estão chegando com um tempo cada vez maior, logo pode mandar diminuir o bitrate (mandar menos dados por segundo), a resolução do vídeo ou o frame rate (os fps - quadros por segund), mesmo que signifique diminuir a qualidade da transmissão de vídeo para manter a qualidade de áudio.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="7-parte-iv-throughput-vs-responsividade-%E2%80%93-o-dilema-da-rede">7. Parte IV: Throughput vs. Responsividade – O Dilema da Rede</h2>
+<p><strong>Contexto Teórico:</strong> <strong>Throughput</strong> é a quantidade de dados em um tempo (Pablo/vídeo HD), enquanto <strong>responsividade</strong> é a rapidez da resposta (Flash/comando tátil). Nem sempre é possível ter ambos em níveis máximos simultaneamente.</p>
+<h3 id="71-simula%C3%A7%C3%A3o-de-throughput-e-responsividade-no-ns2"><strong>7.1. Simulação de Throughput e Responsividade no NS2</strong></h3>
+<ul>
+<li>Criei e executei o script <code>lab_throughput_responsividade.tcl</code>, comparando o comportamento de FTP (alto throughput) com Ping (alta responsividade).</li>
+</ul>
+<p><strong>Entrega:</strong> O código <code>lab_throughput_responsividade.tcl</code> utilizado.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># [Conferir arquivo lab_throughput_responsividade.tcl]</span>
+</div></code></pre>
+<h3 id="72-an%C3%A1lise-do-throughput-e-responsividade"><strong>7.2. Análise do Throughput e Responsividade</strong></h3>
+<ul>
+<li>Analisei o arquivo <code>lab_throughput_responsividade.tr</code> para calcular o throughput do FTP e a latência de cada ping.</li>
+</ul>
+<p><strong>Cálculos Detalhados do Throughput do FTP:</strong></p>
+<ul>
+<li>Número de pacotes TCP recebidos: 3702</li>
+<li>Tamanho do pacote TCP (padrão NS2): 512 bytes (ou especifique se diferente) 1040</li>
+<li>Tempo total da simulação para FTP (stop - start): [0.5 até 4.5 = 4] foram 4 segundos</li>
+<li>Throughput = (Número de pacotes * Tamanho do pacote) / Tempo</li>
+<li>Throughput = (3702 * 1040) / 4</li>
+<li>Throughput (em Kbps/Mbps): 962520 = 962,52Kbps</li>
+</ul>
+<p><strong>Cálculos da Latência para cada pacote Ping e Impacto do FTP:</strong></p>
+<p>Como calcular:</p>
+<p>Latência = Timestamp Recebimento - Timestamp Envio</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Ping Nº</th>
+<th style="text-align:left">Timestamp Envio</th>
+<th style="text-align:left">Timestamp Recebimento</th>
+<th style="text-align:left">Latência (ms)</th>
+<th style="text-align:left">Observações sobre o Impacto do FTP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">[1.0008]</td>
+<td style="text-align:left">[1.010851]</td>
+<td style="text-align:left">[0,010051]</td>
+<td style="text-align:left">[Nenhum impacto significativo]</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">[1.010851]</td>
+<td style="text-align:left">[1.020902]</td>
+<td style="text-align:left">[0,010051]</td>
+<td style="text-align:left">[Nenhum impacto significativo]</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">[1.020902]</td>
+<td style="text-align:left">[1.030954]</td>
+<td style="text-align:left">[0,010052]</td>
+<td style="text-align:left">[Nenhum impacto significativo]</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">[1.030954]</td>
+<td style="text-align:left">[1.041005]</td>
+<td style="text-align:left">[0,010051]</td>
+<td style="text-align:left">[Nenhum impacto significativo]</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">[1.300435]</td>
+<td style="text-align:left">[1.310486]</td>
+<td style="text-align:left">[0,010051]</td>
+<td style="text-align:left">[Nenhum impacto significativo]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1%C2%B0-ping">1° ping</h3>
+<ul>
+<li>1 0 1 ping 64 ------- 2 0.1 3.0 -1 344</li>
+</ul>
+<ul>
+<li>1.0008 0 1 ping 64 ------- 2 0.1 3.0 -1 344
+r 1.010851 0 1 ping 64 ------- 2 0.1 3.0 -1 344</li>
+</ul>
+<h3 id="2%C2%B0-ping">2° ping</h3>
+<ul>
+<li>1.010851 1 3 ping 64 ------- 2 0.1 3.0 -1 344</li>
+</ul>
+<ul>
+<li>1.010851 1 3 ping 64 ------- 2 0.1 3.0 -1 344
+r 1.020902 1 3 ping 64 ------- 2 0.1 3.0 -1 344</li>
+</ul>
+<h3 id="3%C2%B0-ping">3° ping</h3>
+<ul>
+<li>1.020902 3 1 ping 64 ------- 2 3.0 0.1 -1 364</li>
+</ul>
+<ul>
+<li>1.020902 3 1 ping 64 ------- 2 3.0 0.1 -1 364
+r 1.030954 3 1 ping 64 ------- 2 3.0 0.1 -1 364</li>
+</ul>
+<h3 id="4%C2%B0-ping">4° ping</h3>
+<ul>
+<li>1.030954 1 0 ping 64 ------- 2 3.0 0.1 -1 364</li>
+</ul>
+<ul>
+<li>1.030954 1 0 ping 64 ------- 2 3.0 0.1 -1 364
+r 1.041005 1 0 ping 64 ------- 2 3.0 0.1 -1 364</li>
+</ul>
+<h3 id="5%C2%B0-ping">5° ping</h3>
+<ul>
+<li>1.3 0 1 ping 64 ------- 2 0.1 3.0 -1 635</li>
+</ul>
+<ul>
+<li>1.300435 0 1 ping 64 ------- 2 0.1 3.0 -1 635
+r 1.310486 0 1 ping 64 ------- 2 0.1 3.0 -1 635</li>
+</ul>
+<h3 id="73-perguntas-para-refletir-e-discutir"><strong>7.3. Perguntas para Refletir e Discutir</strong></h3>
+<ol>
+<li>
+<p><strong>Qual aplicação (FTP ou Ping) é mais sensível à latência? Por quê?</strong></p>
+<ul>
+<li>O ping é mais sensível, pelo atraso do retorno do ACK comparado aos vários pacotes FTP enviados. Se houver atraso na rede, isso é imediatamente visível no tempo de resposta do Ping.</li>
+</ul>
+</li>
+<li>
+<p><strong>Como o throughput do FTP foi afetado pela capacidade do link?</strong></p>
+<ul>
+<li>Pois, a capacidade máxima do canal (10 Mbps) limitou o throughput máximo, representando aproximadamente 10% da capacidade total do link.
+Throughput quase 1 Mbps para a capacidade do Link de 10 Mbps, representando 10%.</li>
+</ul>
+</li>
+<li>
+<p><strong>Em um cenário de telecirurgia, qual seria a prioridade: alto throughput para o vídeo HD (Pablo) ou alta responsividade para os comandos do bisturi (Flash)? Justifique.</strong></p>
+<ul>
+<li>O mais alarmante entre essas duas opções, vai depender do cenário da cirurgia e dos técnicos ali habilitados. Num primeiro momento os comandos do bisturi devem ser priorizados, pois devem vir de comandos precisos e delicados, deixando o vídeo com uma qualidade baixa. Porém, quando não estiver usando o bisturi (algo que exige profissionalismo), pode-se alterar para a alta qualidade de vídeo.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="8-parte-v-perda-de-pacotes-%E2%80%93-o-pre%C3%A7o-da-imperfei%C3%A7%C3%A3o">8. Parte V: Perda de Pacotes – O Preço da Imperfeição</h2>
+<p><strong>Contexto Teórico:</strong> A perda de pacotes ocorre quando um pacote não chega ao destino. A tolerância a essa perda varia drasticamente entre as aplicações, como os dados vitais do paciente (Data).</p>
+<h3 id="81-simula%C3%A7%C3%A3o-de-perda-de-pacotes-no-ns2"><strong>8.1. Simulação de Perda de Pacotes no NS2</strong></h3>
+<ul>
+<li>Criei e executei o script <code>lab_perda.tcl</code>, ajustando a taxa de erro de bit (<code>rate_</code>) para diferentes valores (ex: 1e-2, 1e-5) no <code>ErrorModel</code>.</li>
+</ul>
+<p><strong>Entrega:</strong> O código <code>lab_perda.tcl</code> utilizado.</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># [Conferir Arquivo lab_perda.tcl]</span>
+</div></code></pre>
+<h3 id="82-an%C3%A1lise-da-perda-de-pacotes-no-arquivo-de-trace-tr"><strong>8.2. Análise da Perda de Pacotes no Arquivo de Trace (.tr)</strong></h3>
+<ul>
+<li>Analisei o arquivo <code>lab_perda.tr</code> para calcular a taxa de perda de pacotes UDP e observar o comportamento do TCP.</li>
+</ul>
+<p><strong>Cálculos da Taxa de Perda de Pacotes UDP:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>rate_</code> Configurado (ErrorModel)</th>
+<th style="text-align:left">Pacotes UDP Enviados</th>
+<th style="text-align:left">Pacotes UDP Recebidos</th>
+<th style="text-align:left">Pacotes Perdidos</th>
+<th style="text-align:left">Taxa de Perda (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[Valor 1 (e.g., 1e-2)]</td>
+<td style="text-align:left">[1123]</td>
+<td style="text-align:left">[1120]</td>
+<td style="text-align:left">[3]</td>
+<td style="text-align:left">[0,267%]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 2 (e.g., 1e-5)]</td>
+<td style="text-align:left">[1123]</td>
+<td style="text-align:left">[1119]</td>
+<td style="text-align:left">[4]</td>
+<td style="text-align:left">[0,356%]</td>
+</tr>
+</tbody>
+</table>
+<p>Para UDP - São os pacotes CBR (constant bit rate)</p>
+<p>Taxa de perda de pacotes UDP:
+(Enviados - Recebidos) / Enviados</p>
+<p><strong>Descrição do Comportamento do TCP:</strong></p>
+<ul>
+<li>[Descreva o que você observou no trace file para o TCP, mencionando eventos de retransmissão (R) e ACKs, e como ele se diferencia do UDP em termos de entrega final]</li>
+</ul>
+<p>Vemos uma entrega constante de pacotes via constant bit rate (representando o protocolo UDP), sem se importar se o pacote chegou realmente ao destino, sua entrega é rápida, porém não segura, sem retransmissões ou ACKs de confirmação. Diferentemente do que vemos no TCP, temos uma entrega não tão rápida, porém confiável, até mesmo com o estabelecimento da comunicação (pacote inicial), vemos um controle no TCP como retransmissões e recuperações rápidas.</p>
+<h3 id="83-perguntas-para-refletir-e-discutir"><strong>8.3. Perguntas para Refletir e Discutir</strong></h3>
+<ol>
+<li>
+<p><strong>Qual protocolo (UDP ou TCP) é mais afetado pela perda de pacotes em termos de entrega final? Por quê?</strong></p>
+<ul>
+<li>O protocolo TCP é mais afetado pela perda de pacotes. Pois, percebe a perda de pacotes e faz o reenvio deles. Esse processo de retransmissão pode afetar a performance geral levar a latência na rede.</li>
+</ul>
+</li>
+<li>
+<p><strong>Como a taxa de perda configurada no script (<code>rate_</code>) se compara à taxa de perda observada para o UDP?</strong></p>
+<ul>
+<li>A taxa de perda configurada no script (1e-2 ou 1e-5) é a probabilidade de erro por bit num pacote. Entretanto, podemos observar que a taxa de perda observada é impactada pela taxa de erro de bit. Mas, com uma taxa mais alta (1e-2) tivemos uma perda mais baixa.</li>
+</ul>
+</li>
+<li>
+<p><strong>Dê exemplos de aplicações que toleram alta perda de pacotes e aplicações que não toleram nenhuma perda.</strong></p>
+<ul>
+<li>Aplicações que toleram perdas:
+DNS (resolução de nomes de domínio) e SNMP (monitoramento de dispositivos). A perda de pacotes para ambos é tolerável, visto que suas retransmissões são rápidas e não custosas.</li>
+</ul>
+<p>Aplicações que não toleram perdas:
+Transmissão de dados bancários e controle de processos automatizados na produção de uma fábrica. Não toleram, pois são cruciais ao processo, mesmo havendo retransmissão de pacotes, pode ser que seja tarde demais e cause erros.</p>
+</li>
+</ol>
+<hr>
+<h2 id="9-parte-vi-consolida%C3%A7%C3%A3o-e-perspectivas-futuras">9. Parte VI: Consolidação e Perspectivas Futuras</h2>
+<h3 id="s%C3%ADntese-do-aprendizado"><strong>Síntese do Aprendizado</strong></h3>
+<ul>
+<li>
+<p>[Escreva uma síntese dos principais aprendizados sobre a relação entre os parâmetros de QoS (latência, jitter, throughput, perda) e o desempenho de diferentes aplicações, utilizando os resultados dos experimentos. Faça um link com a <strong>narrativa da telecirurgia</strong> e proponha uma <strong>solução baseada em QoS</strong> para otimizar o desempenho das aplicações críticas nesse cenário desafiador (vídeo HD, comandos táteis, voz, dados do paciente).]</p>
+<p>Latência é medida em milissegundos (ms), representa o tempo total para um pacote ir da origem ao destino.
+Uma alta latência afeta a responsividade, isso é, a capacidade do sistema de responder a comandos ou solicitações de forma rápida, como os comandos médicos.
+Vemos nesse laboratório que a latência aumenta conforme o atraso do link / conexão. Algo como uma telecirurgia a distância (Tóquio ao Brasil) teria um atraso de link alto.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>link_delay</code> Configurado</th>
+<th style="text-align:left">Timestamp Envio</th>
+<th style="text-align:left">Timestamp Recebimento</th>
+<th style="text-align:left">Latência Calculada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[Valor 1 (e.g., 10ms)]</td>
+<td style="text-align:left">[0,69]</td>
+<td style="text-align:left">[0,708]</td>
+<td style="text-align:left">[0,018]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 2 (e.g., 100ms)]</td>
+<td style="text-align:left">[0,85]</td>
+<td style="text-align:left">[0,958]</td>
+<td style="text-align:left">[0,108]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 3 (e.g., 500ms)]</td>
+<td style="text-align:left">[0,77]</td>
+<td style="text-align:left">[1,278]</td>
+<td style="text-align:left">[0,508]</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Jitter é a variação no atraso da entrega de pacotes, isso é, os pacotes chegam ao destino com atraso irregular, afetando o desempenho de aplicações em tempo real, como chamadas de voz (VoIP) e videoconferências, resultando em áudio cortado, vídeo com falhas ou congelado e atrasos na comunicação.
+</code></pre>
+<p>Vemos nesse laboratório que mesmo com uma chamada local básica do Google Meet, temos um Jitter e uma fração de perda maiores do que o aceitável. Logo, a telecirurgia teria graves problemas, como comandos por áudio terem ruídos ou serem incompletos, ou o vídeo ficar congelado na maioria do tempo.</p>
+<ul>
+<li>
+<p><strong>Interarrival Jitter:</strong> 1550922407 ms -&gt; são quase 18 dias</p>
+</li>
+<li>
+<p><strong>Fraction Lost:</strong> 83 / 256 = 0,32422 x100 = 32,422% (ou % se convertido)</p>
+</li>
+<li>
+<p><strong>Cumulative Number of Packets Lost:</strong> 6701384</p>
+<p>Throughput é medida em bits por segundo (bps), kilobits por segundo (Kbps) ou megabits por segundo (Mbps). Representa a capacidade efetiva de transferência de dados, considerando perdas, retransmissões e overhead de protocolos (quantidade real de dados).</p>
+</li>
+</ul>
+<p>Vemos nesse laboratório que o valor de Throughput chega perto de 1Mbps, que ao ser comparado com valores de outras redes, chega perto de um rede wi-fi 4G. Neste contexto, vemos a importância de uma boa infraestrutura das redes e seus processamentos intermediários. Pois a divisão pelo tempo é por parte impactada pelo processamento de dispositivos intermediários (roteadores, switches, servidores, NATs...), e a capacidade do link pode oferecer com que pacotes maiores sejam transportados por vez. Aumentando o Throughput da rede.</p>
+<ul>
+<li>
+<p>Número de pacotes TCP recebidos: 3702</p>
+</li>
+<li>
+<p>Tamanho do pacote TCP (padrão NS2): 512 bytes (ou especifique se diferente) 1040</p>
+</li>
+<li>
+<p>Tempo total da simulação para FTP (stop - start): [0.5 até 4.5 = 4] foram 4 segundos</p>
+</li>
+<li>
+<p>Throughput = (Número de pacotes * Tamanho do pacote) / Tempo</p>
+</li>
+<li>
+<p>Throughput = (3702 * 1040) / 4</p>
+</li>
+<li>
+<p>Throughput (em Kbps/Mbps): 962520 = 962,52Kbps</p>
+<p>Tolerância a perdas é a capacidade de uma aplicação continuar funcionando mesmo que pacotes sejam perdidos durante a transmissão. Diferentes aplicações possuem níveis distintos de tolerância, determinando como devem ser priorizadas e protegidas pelos mecanismos de QoS.</p>
+</li>
+</ul>
+<p>Vemos nesse laboratório algo meio distinto, pois ao diminuirmos a taxa de erro por bit, a taxa de perda aumentou (deveria abaixar), nesse caso a perda aumenta em 1 pacote, sendo aceitável. Porém, considerando uma taxa de perda alta, teremos problemas na telecirurgia, pois podemos ter falhas nos comandos ou perda da qualidade de vídeo. Para tolerar essas perdas, deve-se ter retransmissões rápidas (Fast Retransmit - qualidade do TCP), redundâncias na rede e priorização de tráfego crítico. Claro, transmissões como a telecirurgia devem-se usar do protocolo UDP, por oferecer baixa latência, sem overhead de cabeçalhos. Porém, sem garantia de entrega.</p>
+<p>Entende-se que unir uma característica TCP ao UDP, pode ser realizada utilizando protocolos como o QUIC/UDP criado pelo Google.</p>
+<p><em>Explicações sobre o protocolo QUIC/UDP fogem do escopo deste laboratório, porém cabe em explicações futuras</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><code>rate_</code> Configurado (ErrorModel)</th>
+<th style="text-align:left">Pacotes UDP Enviados</th>
+<th style="text-align:left">Pacotes UDP Recebidos</th>
+<th style="text-align:left">Pacotes Perdidos</th>
+<th style="text-align:left">Taxa de Perda (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[Valor 1 (e.g., 1e-2)]</td>
+<td style="text-align:left">[1123]</td>
+<td style="text-align:left">[1120]</td>
+<td style="text-align:left">[3]</td>
+<td style="text-align:left">[0,267%]</td>
+</tr>
+<tr>
+<td style="text-align:left">[Valor 2 (e.g., 1e-5)]</td>
+<td style="text-align:left">[1123]</td>
+<td style="text-align:left">[1119]</td>
+<td style="text-align:left">[4]</td>
+<td style="text-align:left">[0,356%]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+
+</body>
+</html>
