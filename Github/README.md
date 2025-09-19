@@ -43,7 +43,7 @@ Os principais objetivos deste laboratório são:
 
 **Entrega:** Captura de tela do `qos_base.tcl` no editor de texto.
 
-![captura de tela do arquivo qos_base](/Github/imagens/print_qos_base.jpeg)
+![captura de tela do arquivo qos_base](imagens/print_qos_base.jpeg)
 
 ### **4.2. Configuração Inicial do Wireshark**
 
@@ -51,7 +51,7 @@ Os principais objetivos deste laboratório são:
 
 **Entrega:** Captura de tela do Wireshark com a interface de captura selecionada.
 
-![captura de tela do Wireshark mostrando a interface selecionada](/Github/imagens/print_wireshark_interface_selecionada.jpeg)
+![captura de tela do Wireshark mostrando a interface selecionada](imagens/print_wireshark_interface_selecionada.jpeg)
 
 ---
 
@@ -144,18 +144,22 @@ r 1.278 0 1 cbr 1000 ------- 0 0.0 1.0 27 27
 
 1.  Captura de tela do Wireshark mostrando a captura inicial de pacotes.
 
-![captura de tela da captura inicial de pacotes no wireshark](/Github/imagens/print_wireshark_captura_inicial.jpeg)
+![captura de tela da captura inicial de pacotes no wireshark](imagens/print_wireshark_captura_inicial.jpeg)
 
 
 2.  Captura de tela do Wireshark mostrando o filtro `rtcp` aplicado.
 
-![captura de tela da captura inicial do wireshark com o filtro selecionado](/Github/imagens/print_wireshark_captura_filtrada.jpeg)
+![captura de tela da captura inicial do wireshark com o filtro selecionado](imagens/print_wireshark_captura_filtrada.jpeg)
 
 3.  Captura de tela dos detalhes de um pacote **Receiver Report (RR)**, com os campos `Fraction Lost`, `Cumulative Number of Packets Lost` e `Interarrival Jitter` claramente visíveis.
 
-![captura de tela da captura inicial do wireshark com os campos jitter, fraction lost e cumulative visíveis](/Github/imagens/print_wireshark_campos1.jpeg)
+Primeira Análise:
 
-![captura de tela da captura inicial do wireshark para confirmação dos campos jitter, fraction lost e cumulative](/Github/imagens/print_wireshark_campos2.jpeg)
+![captura de tela da captura inicial do wireshark com os campos jitter, fraction lost e cumulative visíveis](imagens/print_wireshark_campos1.jpeg)
+
+Segunda Análise:
+
+![captura de tela da captura inicial do wireshark para confirmação dos campos jitter, fraction lost e cumulative](imagens/print_wireshark_campos2.jpeg)
 
 **Valores Observados:**
 
@@ -378,3 +382,4 @@ Entende-se que unir uma característica TCP ao UDP, pode ser realizada utilizand
 
 
 ---
+
